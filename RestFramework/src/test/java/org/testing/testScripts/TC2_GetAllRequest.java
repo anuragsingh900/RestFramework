@@ -5,10 +5,11 @@ import java.util.Properties;
 
 import org.testing.testSteps.HTTPMethods;
 import org.testing.utilities.PropertiesHandle;
+import org.testng.annotations.Test;
 
 public class TC2_GetAllRequest 
 {
-
+	@Test
 	public void testCase2() throws IOException 
 	{
 	

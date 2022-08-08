@@ -57,4 +57,33 @@ public class HTTPMethods
 		
 		return res;
 	}
+	
+	public Response updateRequest(String bodyData,String uriKey,String idValue)
+	{
+		String uri=pr.getProperty(uriKey)+"/"+idValue;
+		Response res=
+		given()
+		.contentType(ContentType.JSON)
+		.body(bodyData)
+		.when()
+		.put(uri);
+		
+		System.out.println("Status code is" + res.statusCode());
+		System.out.println("********Respnse is**********");
+		System.out.println(res.asString());
+		
+		return res;
+	}
+	
+	public void deleteRequest(String uriKey,String idValue)
+	{
+		String uri=pr.getProperty(uriKey)+"/"+idValue;
+		Response res=
+				given()
+				.contentType(ContentType.JSON)
+				.when()
+				.delete(uri);
+		
+		System.out.println("Status code is " + res.statusCode());
+	}
 }
