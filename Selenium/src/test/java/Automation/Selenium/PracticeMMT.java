@@ -4,6 +4,7 @@ package Automation.Selenium;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.TakesScreenshot;
@@ -13,6 +14,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+
+import org.openqa.selenium.JavascriptExecutor;
 
 public class PracticeMMT 
 {
@@ -38,5 +41,18 @@ public class PracticeMMT
 	FileUtils.copyFile(scrFile, DestFile);
 	
 	//driver.close();
+JavascriptExecutor js=(JavascriptExecutor) driver;
+String URL=js.executeScript("return document.URL;").toString();
+System.out.println(URL);
+String Title=js.executeScript("return document.title;").toString();
+System.out.println(Title);
+js.executeScript("window.scrollBy(0,200)");
+js.executeScript("window.location='http://demo.guru99.com/'");
+js.executeScript("alert('Welcome');");
+Thread.sleep(3000);
+driver.navigate().back();
+driver.manage().timeouts().implicitlyWait(1000, TimeUnit.MILLISECONDS);
+
+	
 	}
 }
